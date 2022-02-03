@@ -1,8 +1,10 @@
 
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm'
+import { BaseEntity, Column, Entity, JoinColumn, JoinTable, ManyToOne, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Role } from '../roles/roles.entity'
+import { UserDetail } from './users.details.entity'
 
 @Entity('users')
-export class Users extends BaseEntity {
+export class User extends BaseEntity {
 
     @PrimaryGeneratedColumn('increment')
     id: number
@@ -24,4 +26,14 @@ export class Users extends BaseEntity {
 
     @Column({ type: 'timestamp', name:'updated_at' })
     updatedAt: Date
+
+    // Relations
+    @OneToOne( type => UserDetail, { cascade: true, nullable: false, eager: true } )
+    @JoinColumn({ name: 'detail_id' })
+    details: UserDetail
+
+    @ManyToOne( type => Role , role => role.users )
+    @JoinTable({ name: 'user_roles' })
+    roles: Role[]
+
 }
