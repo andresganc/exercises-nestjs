@@ -1,3 +1,4 @@
+
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -7,6 +8,7 @@ import { ConfigService } from './config/config.service';
 import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './modules/users/users.module';
 import { RolesModule } from './modules/roles/roles.module';
+
 
 @Module({
   imports: [ConfigModule, DatabaseModule, UsersModule, RolesModule],
@@ -20,4 +22,5 @@ export class AppModule {
   constructor( private readonly _configService: ConfigService){
     AppModule.port = this._configService.get(Configuration.PORT)
   }
+
 }
