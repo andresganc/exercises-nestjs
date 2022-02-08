@@ -28,9 +28,9 @@ export class User extends BaseEntity {
     updatedAt: Date
 
     // Relations
-    @OneToOne( type => UserDetail, { cascade: true, nullable: false, eager: true } )
+    @OneToOne( type => UserDetails, { cascade: true, nullable: false, eager: true } )
     @JoinColumn({ name: 'detail_id' })
-    details: UserDetail
+    details: UserDetails
 
     @ManyToOne( type => Role , role => role.users )
     @JoinTable({ name: 'user_roles' })
