@@ -1,4 +1,4 @@
 
-# COURSE NESTJS
+# EXERCISES NESTJS
 
-    - Course NC - NestJS
+    -  Exercises NestJS
